@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class RequestProcessingJob implements Runnable {
 	private Socket sock;
@@ -54,10 +55,12 @@ public class RequestProcessingJob implements Runnable {
 						OutputStream out;
 						try {
 							out = sock.getOutputStream();
-							PrintWriter pw = new PrintWriter(out);
-							
+							PrintWriter pw = new PrintWriter(out,true);
+							Scanner input = new Scanner(System.in);
 							while(true){
-								pw.println("test message from " + sock);
+								
+								pw.println(input.nextLine());
+//								input.close();
 							}
 							
 							
